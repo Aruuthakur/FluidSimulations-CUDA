@@ -18,13 +18,23 @@ Fluid simulation is governed by the **Navier-Stokes equations**, which describe 
 
 The Navier-Stokes equations for an incompressible fluid are given by:
 
-\[
-\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} = -\frac{1}{\rho} \nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}
-\]
+∂t
+∂u
+​
+ +(u⋅∇)u=− 
+ρ
+1
+​
+ ∇p+ν∇ 
+2
+ u+f
 
-\[
-\nabla \cdot \mathbf{u} = 0
-\]
+∇
+⋅
+𝑢
+=
+0
+∇⋅u=0
 
 where:
 
@@ -48,9 +58,16 @@ To overcome the computational intensity of solving the Navier-Stokes equations, 
 
 Consider the particle advection step, which updates particle positions based on their velocities:
 
-\[
-\mathbf{x}_{t+1} = \mathbf{x}_t + \mathbf{v}_t \Delta t
-\]
+x 
+t+1
+​
+ =x 
+t
+​
+ +v 
+t
+​
+ Δt
 
 This simple integration is computed in parallel across all particles, leveraging CUDA’s ability to execute large numbers of threads simultaneously.
 
@@ -62,12 +79,16 @@ Efficiently managing volumetric data is crucial for large-scale fluid simulation
 
 The VDB grid is mathematically defined by a sparse data structure:
 
-\[
-V(x, y, z) = \begin{cases} 
-\text{value} & \text{if voxel is active} \\
-0 & \text{if voxel is inactive}
-\end{cases}
-\]
+V(x,y,z)={ 
+value
+0
+​
+  
+if voxel is active
+if voxel is inactive
+​
+ 
+
 
 This structure allows the simulation to handle large volumes while keeping computational and memory costs low.
 
@@ -79,9 +100,7 @@ The AMR module dynamically adjusts the simulation’s mesh resolution based on t
 
 Refinement is based on the magnitude of the velocity gradient:
 
-\[
-|\nabla \mathbf{u}| > \epsilon \implies \text{refine mesh}
-\]
+∣∇u∣>ϵ⟹refine mesh
 
 where \(\epsilon\) is a user-defined threshold. This criterion ensures that the mesh adapts to the fluid's behavior, offering higher detail in turbulent regions and coarser grids in more uniform areas.
 
