@@ -162,6 +162,13 @@ The current implementation provides a robust foundation for fluid simulation in 
 - *Numerical Recipes in C: The Art of Scientific Computing*
 - *Houdini Development Kit Documentation*
 
+- ---
+
+### Authors
+
+- **Hakikat Singh**
+- **Aruna**
+
 ---
 
 ### Authors
